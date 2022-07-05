@@ -43,10 +43,10 @@ const montant = (liste = [], cj, jc) => {
         liste_cjjc.push(couple)
     }
     for (var i = 0; i < liste_cjjc.length; i++) {
-        if (liste_cjjc[i] == 'cj' || liste_cjjc[i] == 'CJ') {
+        if (liste_cjjc[i] == 'cj' || liste_cjjc[i] == 'CJ' || liste_cjjc[i] == 'cJ' || liste_cjjc[i] == 'Cj') {
             x++;
         }
-        if (liste_cjjc[i] == 'jc' || liste_cjjc[i] == 'JC') {
+        if (liste_cjjc[i] == 'jc' || liste_cjjc[i] == 'JC' || liste_cjjc[i] == 'Jc' || liste_cjjc[i] == 'jC') {
             y++;
         }
     }
@@ -120,6 +120,7 @@ const traitement = (liste = []) => {
         solution = [],
         value = ['c', 'j']
     arrangements = permute_ordre(0, output, solution, value);
+    // console.log('arrangements= ', arrangements)
     var mont = 0,
         k = 0,
         ligne = []
@@ -128,15 +129,16 @@ const traitement = (liste = []) => {
         ligne = arrangements[k]
         for (var j = 0; j < ligne.length; j++) {
             chaine[indice[j]] = ligne[j]
+
         }
         mont = montant(chaine, x, y)
         all_mont.push(mont)
             // console.log('chaine', chaine)
-            //console.log('montant=', mont, '\n all mont= ', all_mont)
+            // console.log('montant=', mont, '\n all mont= ', all_mont)
         k++
     }
 
-    console.log("montant:", all_mont)
+    //console.log("montant:", all_mont)
 
 
     var Mmin = all_mont[0]
@@ -176,15 +178,20 @@ readline.on('line', (data) => {
         if (testvide(liste1)) {
             //console.log(`Case #${ ( line - 1 )  }: ${traitement( data ) }`)
             val = traitement(data)
+
+
         } else {
 
             cj = parseInt(data[0]),
                 jc = parseInt(data[1]);
             //console.log(`Case #${ ( line - 1 )  }: ${montant( liste1,cj,jc) }`)
             val = montant(liste1, cj, jc)
+
         }
         final.push(val)
             //console.log(final)
+
+        //console.log(final)
         if (line - 1 == max) {
 
             for (var i = 0; i < final.length; i++) {
