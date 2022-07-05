@@ -3,6 +3,7 @@ all: App
 
 App: run
 	rm -rf *.o
+	clear
 
-run: main.cpp
-	g++ main.cpp -o App
+run: ./solution-teamCPP/main.cpp
+	g++ ./solution-teamCPP/main.cpp -o App
