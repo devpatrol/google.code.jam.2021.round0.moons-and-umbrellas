@@ -1,3 +1,32 @@
+function replace() {
+
+    var output = new Array(2),
+        solution = [],
+        value = ['c', 'j']
+    arrangements = permute_ordre(0, output, solution, value);
+    //console.log(arrangements)
+    // repalcement par les differente permutation:
+    var mont = 0
+    var all_mont = []
+    var all_chaine = []
+    for (var j = 0; j < arrangements.length; j++) {
+        var ligne = arrangements[j]
+        for (var i = 0; i < nb_vide; i++) {
+            chaine[indice[i]] = ligne[i]
+                //all_chaine.push(chaine);
+
+            console.log(chaine)
+        }
+        //console.log(chaine)
+
+        console.log(all_chaine)
+            //console.log(montant(chaine, x, y))
+        all_mont.push(montant(chaine, x, y))
+    }
+}
+
+
+
 const { count } = require('console');
 
 const readline = require('readline').createInterface(process.stdin, process.stdout);
@@ -102,6 +131,14 @@ const indice_vide = (liste = []) => {
     return indice
 }
 
+/*  
+
+fonction combler vide
+
+*/
+const combler_vide = () => {
+
+}
 
 /*  
 
@@ -111,32 +148,38 @@ fonction principale de traitement
 const traitement = (liste = []) => {
     var x = parseInt(liste[0]),
         y = parseInt(liste[1]),
-        chainet = liste[2]
-    var chaine = chainet.split(''),
-        nb_vide = vide(chaine)
+        z = liste[2];
+    var chaine = z.split('')
+    var nb_vide = vide(chaine),
 
-    indice = indice_vide(chaine)
+        indice = indice_vide(chaine);
     var output = new Array(nb_vide),
         solution = [],
         value = ['c', 'j']
     arrangements = permute_ordre(0, output, solution, value);
+    console.log(arrangements)
+        // repalcement par les differente permutation:
     var mont = 0,
-        k = 0,
+        a, k = 0,
         ligne = []
     var all_mont = []
+    var all_chaine = []
     while (k < arrangements.length) {
         ligne = arrangements[k]
         for (var j = 0; j < ligne.length; j++) {
-            chaine[indice[j]] = ligne[j]
+
+            console.log(ligne)
         }
-        mont = montant(chaine, x, y)
-        all_mont.push(mont)
-            // console.log('chaine', chaine)
-            //console.log('montant=', mont, '\n all mont= ', all_mont)
-        k++
+
+
+
+
+        // all_chaine.push(chaine)
+        // console.log(all_chaine, '\n\n')
     }
 
-    console.log("montant:", all_mont)
+
+    // console.log("montant:", all_mont)
 
 
     var Mmin = all_mont[0]
@@ -174,7 +217,7 @@ readline.on('line', (data) => {
             //console.log(liste1, " test vide: ", testvide(liste1))
             //var liste = data.map(i => parseInt(i));
         if (testvide(liste1)) {
-            //console.log(`Case #${ ( line - 1 )  }: ${traitement( data ) }`)
+            console.log(`Case #${ ( line - 1 )  }: ${traitement( data ) }`)
             val = traitement(data)
         } else {
 
